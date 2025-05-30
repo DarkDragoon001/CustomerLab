@@ -1,0 +1,91 @@
+create Account 
+
+Url:http://localhost:6000/accounts
+
+Method:POST
+
+payload : {
+  "email":"arun5@yopmail.com",
+  "account_name":"Arun"
+  "website":"sample.com"
+}
+Output : "408612f4c3974c87afef5a16c896a6bb"
+
+
+get Account 
+
+Url:http://localhost:6000/accounts
+
+Method:GET
+
+output:[
+  {
+    "id": 4,
+    "email": "arun2@yopmail.com",
+    "name": "Arun",
+    "website": "googles",
+    "secret_token": "408612f4c3974c87afef5a16c896a6bb"
+  }
+]
+
+Delete Account
+
+Url : http://localhost:6000/accounts/:id
+method: DELETE
+
+output:{
+  "message": "Deleted account with id 3"
+}
+
+create destination
+Url :http://localhost:6000/destinations
+
+method :post
+
+{
+  "accountId":"f64bdda0-4879-467c-adcf-2c08ee879ce6", 
+  "url":"http://localhost:7000",
+  "http_method":"get",
+  "headers":{  
+    "APP_ID": "1234APPID1234",  
+    "APP_SECTET": "enwdj3bshwer43bjhjs9ereuinkjcnsiurew8s",  
+    "ACTION": "user.update",  
+    "Content-Type": "application/json",  
+    "Accept": "*"  
+  }  
+}
+
+
+
+
+
+get destination
+Url : http://localhost:6000/destinations/account/:accountId
+
+
+output:output :[
+  {
+    "id": 6,
+    "account_id": "4",
+    "url": "http://localhost:7000",
+    "method": "get",
+    "headers": "{\"APP_ID\":\"1234APPID1234\",\"APP_SECTET\":\"enwdj3bshwer43bjhjs9ereuinkjcnsiurew8s\",\"ACTION\":\"user.update\",\"Content-Type\":\"application/json\",\"Accept\":\"*\"}"
+  },
+  {
+    "id": 7,
+    "account_id": "4",
+    "url": "http://localhost:7000",
+    "method": "get",
+    "headers": "{\"APP_ID\":\"1234APPID1234\",\"APP_SECTET\":\"enwdj3bshwer43bjhjs9ereuinkjcnsiurew8s\",\"ACTION\":\"user.update\",\"Content-Type\":\"application/json\",\"Accept\":\"*\"}"
+  }]
+
+
+
+WebHook 
+
+Url :http://localhost:6000/server/incoming_data
+Method:Post
+
+payload :{
+  "isPayment":true
+}
